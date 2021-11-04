@@ -1,2 +1,2 @@
-# futsalbackend
-Futsal API - NodeJS , ExpressJS, MongoDB
+# futbackend
+REST API - NodeJS &amp; Express JS
