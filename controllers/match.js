@@ -4,6 +4,11 @@ const Futsal = require("../models/Futsal");
 const { StatusCodes } = require("http-status-codes");
 const { NotFoundError } = require("../errors");
 
+const getAllMatches = async (req, res) => {
+  const matches = await Match.find({});
+  res.status(StatusCodes.OK).json({ matches });
+};
+
 const createMatch = async (req, res) => {
   const futsal = await Futsal.findOne({ operator: req.user.userId });
   req.body.futsal = futsal._id;
@@ -36,4 +41,4 @@ const bookMatch = async (req, res) => {
   res.status(StatusCodes.OK).json({ match });
 };
 
-module.exports = { createMatch, bookMatch };
+module.exports = { createMatch, bookMatch, getAllMatches };
