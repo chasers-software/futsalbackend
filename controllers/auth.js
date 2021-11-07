@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
 
 const register = async (req, res) => {
+  console.log('Received Request for Registration',req.body)
   const { password, confirm_password } = req.body;
   if (password !== confirm_password) {
     throw new BadRequestError("Passwords does not match");
