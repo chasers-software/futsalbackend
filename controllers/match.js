@@ -6,7 +6,16 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const timeslotGenerator = require("../utils/matchgen");
 
 const getAllMatches = async (req, res) => {
-  const matches = await Match.find({});
+  queryObject = {};
+  const { startTime, endTime } = req.query;
+  if (startTime) {
+    queryObject.startTime = startTime;
+  }
+  if (endTime) {
+    queryObject.endTime = endTime;
+  }
+  console.log(queryObject);
+  const matches = await Match.find(queryObject);
   res.status(StatusCodes.OK).json({ matches });
 };
 
