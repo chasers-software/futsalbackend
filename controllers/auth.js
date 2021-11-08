@@ -10,6 +10,12 @@ const registerPlayer = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token });
 };
 
+const registerAdmin = async (req, res) => {
+  const user = await User.create({ ...req.body });
+  const token = user.createJWT();
+  res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token });
+};
+
 const registerFutsal = async (req, res) => {
   const user = await User.create({ ...req.body.operator });
 
@@ -50,5 +56,6 @@ const login = async (req, res) => {
 module.exports = {
   registerPlayer,
   registerFutsal,
+  registerAdmin,
   login,
 };

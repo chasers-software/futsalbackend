@@ -12,6 +12,7 @@ const authRouter = require("./routes/auth");
 const publicRouter = require("./routes/public");
 const userRouter = require("./routes/users");
 const matchRouter = require("./routes/match");
+const adminRouter = require("./routes/admin.routes");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -24,9 +25,13 @@ app.use("/", publicRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/matches", matchRouter);
+app.use("/", adminRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
+
+// const MONGO_URI =
+//   "mongodb+srv://sauzzon:1234567890@nodeexpresscluster.xpzo6.mongodb.net/FutsalBackend?retryWrites=true&w=majority";
 
 const port = process.env.PORT || 5000;
 

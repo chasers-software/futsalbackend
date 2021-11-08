@@ -18,6 +18,10 @@ const FutsalSchema = new mongoose.Schema({
     ref: "User",
     required: [true, "Please provide operator"],
   },
+  verified: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Futsal", FutsalSchema);
