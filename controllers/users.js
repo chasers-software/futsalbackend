@@ -10,4 +10,9 @@ const getDashboard = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, futsal, bookedMatches });
 };
 
-module.exports = { getDashboard };
+const getAllUsers = async (req, res) => {
+  const users = await User.find({});
+  res.status(StatusCodes.OK).json({ users });
+};
+
+module.exports = { getDashboard, getAllUsers };

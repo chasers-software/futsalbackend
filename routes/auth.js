@@ -8,7 +8,7 @@ const {
 } = require("../controllers/auth");
 router.post("/registeruser", registerPlayer);
 router.post("/registerfutsal", registerFutsal);
-router.post("registerAdmin", registerAdmin);
+router.post("/registerAdmin", registerAdmin);
 router.post("/login", login);
 
 module.exports = router;
