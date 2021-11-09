@@ -13,7 +13,9 @@ const registerPlayer = async (req, res) => {
 const registerAdmin = async (req, res) => {
   const user = await User.create({ ...req.body });
   const token = user.createJWT();
-  res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token });
+  res
+    .status(StatusCodes.CREATED)
+    .json({ user: { name: user.name, role: user.role }, token });
 };
 
 const registerFutsal = async (req, res) => {
@@ -27,7 +29,7 @@ const registerFutsal = async (req, res) => {
   const token = user.createJWT();
   res.status(StatusCodes.CREATED).json({
     futsal: { futsalName: futsal.futsalName },
-    user: { name: user.name },
+    user: { name: user.name, role: user.role },
     token,
   });
 };
