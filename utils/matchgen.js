@@ -4,6 +4,8 @@ const timeslotGenerator = ({
   closesAt,
   futsal,
   price,
+  futsalName,
+  location,
   createdBy,
 }) => {
   let match = [];
@@ -16,6 +18,8 @@ const timeslotGenerator = ({
       futsal,
       createdBy,
       price,
+      futsalName,
+      location,
     };
     match = [...match, temp];
   }

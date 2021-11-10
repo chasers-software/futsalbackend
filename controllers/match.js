@@ -50,8 +50,8 @@ const createMatch = async (req, res) => {
   // console.log(matches);
   // res.send("Matches cretaed");
 
-  const matchess = await Match.insertMany(matches);
-  res.status(StatusCodes.CREATED).json({ matchess });
+  const matchData = await Match.insertMany(matches);
+  res.status(StatusCodes.CREATED).json({ matchData });
 };
 
 const bookMatch = async (req, res) => {
