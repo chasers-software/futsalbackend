@@ -6,16 +6,16 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const timeslotGenerator = require("../utils/matchgen");
 
 const getAllMatches = async (req, res) => {
-  queryObject = {};
-  const { startTime, endTime } = req.query;
-  if (startTime) {
-    queryObject.startTime = startTime;
-  }
-  if (endTime) {
-    queryObject.endTime = endTime;
-  }
-  console.log(queryObject);
-  const matches = await Match.find(queryObject);
+  // queryObject = {};
+  // const { startTime, endTime } = req.query;
+  // if (startTime) {
+  //   queryObject.startTime = startTime;
+  // }
+  // if (endTime) {
+  //   queryObject.endTime = endTime;
+  // }
+  // console.log(queryObject);
+  const matches = await Match.find();
   res.status(StatusCodes.OK).json({ matches });
 };
 
@@ -34,6 +34,8 @@ const getMatch = async (req, res) => {
 const createMatch = async (req, res) => {
   const futsal = await Futsal.findOne({ operator: req.user.userId });
   req.body.futsal = futsal._id;
+  req.body.futsalName = futsal.futsalName;
+  req.body.location = futsal.location;
   req.body.createdBy = req.user.userId;
 
   const { date, opensAt, closesAt, price } = req.body;

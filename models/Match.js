@@ -6,6 +6,14 @@ const MatchSchema = new mongoose.Schema({
     ref: "Futsal",
     required: [true, "Please provide futsal"],
   },
+  futsalName: {
+    type: String,
+    required: [true, "Please provide futsal Name"],
+  },
+  location: {
+    type: String,
+    required: [true, "Please provide location"],
+  },
   bookedBy: {
     type: mongoose.Types.ObjectId,
     ref: "User",
