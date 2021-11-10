@@ -27,6 +27,10 @@ const MatchSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide end time"],
   },
+  price: {
+    type: String,
+    required: [true, "Please provide price"],
+  },
   status: {
     type: String,
     required: [true, "Please provide status"],

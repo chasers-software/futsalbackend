@@ -36,9 +36,11 @@ const createMatch = async (req, res) => {
   req.body.futsal = futsal._id;
   req.body.createdBy = req.user.userId;
 
-  const { date, opensAt, closesAt } = req.body;
-  if (!date || !opensAt || !closesAt) {
-    throw new BadRequestError(" Please provide date,opensAt, closesAt");
+  const { date, opensAt, closesAt, price } = req.body;
+  if ((!date || !opensAt || !closesAt, !price)) {
+    throw new BadRequestError(
+      " Please provide date,opensAt, closesAt and price"
+    );
   }
 
   const matches = timeslotGenerator(req.body);

@@ -1,4 +1,11 @@
-const timeslotGenerator = ({ date, opensAt, closesAt, futsal, createdBy }) => {
+const timeslotGenerator = ({
+  date,
+  opensAt,
+  closesAt,
+  futsal,
+  price,
+  createdBy,
+}) => {
   let match = [];
 
   for (let index = opensAt; index < closesAt; index++) {
@@ -8,6 +15,7 @@ const timeslotGenerator = ({ date, opensAt, closesAt, futsal, createdBy }) => {
       endTime: index + 1,
       futsal,
       createdBy,
+      price,
     };
     match = [...match, temp];
   }
