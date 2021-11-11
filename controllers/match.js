@@ -6,16 +6,29 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const timeslotGenerator = require("../utils/matchgen");
 
 const getAllMatches = async (req, res) => {
-  // queryObject = {};
-  // const { startTime, endTime } = req.query;
-  // if (startTime) {
-  //   queryObject.startTime = startTime;
-  // }
-  // if (endTime) {
-  //   queryObject.endTime = endTime;
-  // }
-  // console.log(queryObject);
-  const matches = await Match.find();
+  queryObject = {};
+  const { futsalName, date, startTime, endTime, price, status } = req.query;
+  if (futsalName) {
+    queryObject.futsalName = futsalName;
+  }
+  if (date) {
+    queryObject.date = date;
+  }
+  if (startTime) {
+    queryObject.startTime = startTime;
+  }
+  if (endTime) {
+    queryObject.endTime = endTime;
+  }
+  if (price) {
+    queryObject.price = price;
+  }
+  if (status) {
+    queryObject.status = status;
+  }
+  console.log(queryObject);
+
+  const matches = await Match.find(queryObject);
   res.status(StatusCodes.OK).json({ matches });
 };
 
