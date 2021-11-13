@@ -9,15 +9,20 @@ const getAllFutsal = async (req, res) => {
 };
 
 const getFutsal = async (req, res) => {
-  const { id: futsalId } = req.params;
+  const {id}=req.params
 
-  const futsal = await Futsal.findOne({
+  // const userDetail= await User.find({_id:id});
+  // const { id: futsalId } = req.params;
+
+  const futsalId=id
+
+  const futsal = await Futsal.find({
     _id: futsalId,
-  });
+  }).populate('operator');
   if (!futsal) {
     throw new NotFoundError(`No futsal with id ${futsalId}`);
   }
-  res.status(StatusCodes.OK).json({ futsal });
+  res.status(StatusCodes.OK).json(futsal);
 };
 
 const verifyFutsal = async (req, res) => {

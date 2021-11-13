@@ -15,4 +15,14 @@ const getAllUsers = async (req, res) => {
   res.status(StatusCodes.OK).json({ users });
 };
 
-module.exports = { getDashboard, getAllUsers };
+const getUser = async (req,res)=>{
+  console.log('request received')
+
+  const {id}=req.params
+
+  const userDetail= await User.find({_id:id});
+  console.log(userDetail)
+  res.status(StatusCodes.OK).json(userDetail)
+}
+
+module.exports = { getDashboard, getAllUsers, getUser };
