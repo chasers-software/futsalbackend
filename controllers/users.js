@@ -32,7 +32,8 @@ const editProfile = async (req, res) => {
   const entries = Object.keys(req.body);
   const updates = {};
   for (let i = 0; i < entries.length; i++) {
-    updates[entries[i]] = Object.values(req.body)[i];
+    if (Object.values(req.body)[i])
+      updates[entries[i]] = Object.values(req.body)[i];
   }
   User.updateOne(
     { _id: id },

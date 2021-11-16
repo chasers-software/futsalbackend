@@ -7,6 +7,7 @@ const {
   getDashboard,
   getAllUsers,
   getUser,
+  editProfile,
   changePassword,
 } = require("../controllers/users");
 router.get("/dashboard", getDashboard);
