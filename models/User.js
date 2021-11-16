@@ -41,17 +41,10 @@ const UserSchema = new mongoose.Schema({
     enum: ["player", "operator", "admin"],
     // default: "player",
   },
-  profilePic:
-  {
-    type:String,
-    default:''
+  profilePic: {
+    type: String,
+    default: "",
   },
-  description:
-  {
-    type:String,
-    default:''
-
-  }
 });
 
 UserSchema.pre("save", async function () {
