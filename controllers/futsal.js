@@ -44,37 +44,65 @@ const verifyFutsal = async (req, res) => {
   res.status(StatusCodes.OK).json({ futsal });
 };
 
-const editFutsalDetail = async (req, res) => {
-  const pics = req.body.futsalPictures;
-  const futsalDescription = req.body.futsalDescription;
+const editFutsalDetail=async(req,res)=>{
+  const futsalDescription=req.body.futsalDescription;
+  const pics=req.body.images;
+  try
+  {
+    const futsalResponse=await Futsal.updateOne(
+      {
+        _id:req.params.id,
+      },
+      {
+$set:{
+  description=futsalDescription,
+  futsalPictures=pics,
 
-  await Futsal.findOne({ _id: req.params.id }, (err, futsal) => {
-    if (err) {
-      res
-        .status(StatusCodes.NotFoundError)
-        .send({ message: "NO futsal found with matching id" });
-      return;
-    }
-    if (pics) {
-      pics.map((futsalPicture, index) => {
-        futsal.futsalPictures[index] = futsalPicture;
-      });
-    }
-    if (futsalDescription) {
-      futsal.description = futsalDescription;
-    }
-    futsal.save((err) => {
-      if (err) {
-        res
-          .status(StatusCodes.INTERNAL_SERVER_ERROR)
-          .send({ message: "Error on editing futsal details" });
-        return;
+  
+},        
       }
-      res
-        .status(StatusCodes.OK)
-        .send({ message: "futsal detail edited successfully" });
-    });
-  });
-};
+    )
+    console.log("futssal response",futsalResponse);
+    res.status(200).send(futsalResponse);
+  }
+  catch(e){
+    console.log("error on editing");
+  }
+
+
+}
+
+// const editFutsalDetail = async (req, res) => {
+//   const pics = req.body.futsalPictures;
+//   const futsalDescription = req.body.futsalDescription;
+
+//   await Futsal.findOne({ _id: req.params.id }, (err, futsal) => {
+//     if (err) {
+//       res
+//         .status(StatusCodes.NotFoundError)
+//         .send({ message: "NO futsal found with matching id" });
+//       return;
+//     }
+//     if (pics) {
+//       pics.map((futsalPicture, index) => {
+//         futsal.futsalPictures[index] = futsalPicture;
+//       });
+//     }
+//     if (futsalDescription) {
+//       futsal.description = futsalDescription;
+//     }
+//     futsal.save((err) => {
+//       if (err) {
+//         res
+//           .status(StatusCodes.INTERNAL_SERVER_ERROR)
+//           .send({ message: "Error on editing futsal details" });
+//         return;
+//       }
+//       res
+//         .status(StatusCodes.OK)
+//         .send({ message: "futsal detail edited successfully" });
+//     });
+//   });
+// };
 
 module.exports = { getAllFutsal, getFutsal, verifyFutsal, editFutsalDetail };

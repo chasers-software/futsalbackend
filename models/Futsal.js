@@ -22,7 +22,7 @@ const FutsalSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  futsalPicture: [
+  futsalPictures: [
     {
       type: String,
       default: "",
