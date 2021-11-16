@@ -22,16 +22,6 @@ const FutsalSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  futsalPictures: [
-    {
-      type: String,
-      default: "",
-    },
-  ],
-  description: {
-    type: String,
-    default: "",
-  },
 });
 
 module.exports = mongoose.model("Futsal", FutsalSchema);
