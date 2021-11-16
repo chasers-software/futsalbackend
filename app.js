@@ -18,7 +18,8 @@ const futsalRouter = require("./routes/futsal");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
-app.use(express.json());
+app.use(express.json({limit: '50mb',extended:true}));
+app.use(express.urlencoded(({limit: '50mb',extended:true})))
 
 // routes
 app.use("/", publicRouter);

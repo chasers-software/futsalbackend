@@ -46,12 +46,6 @@ const UserSchema = new mongoose.Schema({
     type:String,
     default:''
   },
-  description:
-  {
-    type:String,
-    default:''
-
-  }
 });
 
 UserSchema.pre("save", async function () {
